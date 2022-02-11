@@ -1,5 +1,29 @@
+<%= render 'user-info', user: @user, book: @newbook %>
+
 <h2>Book detail</h2>
 
-
- <%= @book.title %>
- <%= @book.body %>
+<table>
+  <tr>
+    <td>
+      <%= image_tag @book.user.get_profile_image(40,40) %>
+    </td>
+    <td>
+      <%= @book.title %>
+    </td>
+    <td>
+      <%= @book.body %>
+    </td>
+    <% if @book.user == current_user %>
+    <td>
+      <%= link_to "Edit", edit_book_path(@book) %>
+    </td>
+    <td>
+      <%= link_to "Destroy", book_path(@book), method: :delete %>
+    <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td><%= @book.user.name %></td>
+  </tr>
+</table>
+s

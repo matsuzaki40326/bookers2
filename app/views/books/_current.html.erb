@@ -1,22 +1,22 @@
 <h2>User info</h2>
 <table>
- <tr><%= image_tag user.get_profile_image(100,100) %></tr>
+ <tr><%= image_tag current_user.get_profile_image(100,100) %></tr>
  <tr>
   <th>name</th>
-  <th><%= user.name %></th>
+  <th><%= current_user.name %></th>
  </tr>
  <tr>
   <th>introduction</th>
-  <th><%= user.introduction %></th>
+  <th><%= current_user.introduction %></th>
  </tr>
 </table>
 
-<% if user.id == current_user.id %>
+<% if user == current_user %>
  <%= link_to "プロフィール編集", edit_user_path(user) %>
 <% end %>
 
 <h2>New book</h2>
-  <%= form_with model: book, local:true do |f| %>
+  <%= form_with model: @book, local:true do |f| %>
    <label class="inputTitle">Title</label>
    <p><%= f.text_field :title, id:"inputTitle"%></p>
 

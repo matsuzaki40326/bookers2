@@ -1,0 +1,16 @@
+<h2>User info</h2>
+<%= form_with model: @user, local: true do |f| %>
+
+ <label for="inputName">Name</label>
+ <p><%= f.text_field :name, id:"inputName" %></p>
+
+ <label for="inputImage">Image</label>
+ <p><%= f.file_field :profile_image, accept: "image/*" %></p>
+
+ <label for="inputIntroduction">Introduction</label>
+ <p><%= f.text_area :introduction, id:"inputIntroduction" %></p>
+
+ <%= f.submit 'Create User' %>
+
+<% end %>
+
