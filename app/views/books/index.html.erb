@@ -1,3 +1,4 @@
+<div class="container pt-5">
 <% if @book.errors.any? %>
 　<div id="error_explanation">
 　 <h3><%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:</h3>
@@ -9,7 +10,6 @@
   </div>
 <% end %>
 
-<div class="container pt-5">
  <div class="row">
   <%= render 'current', book: @book, user: @user %>
 
