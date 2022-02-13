@@ -1,27 +1,47 @@
-<%= render 'current', book: @book, user: @user %>
+<% if @book.errors.any? %>
+　<div id="error_explanation">
+　 <h3><%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:</h3>
+　     <ul>
+　       <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+         <% end %>
+       </ul>
+  </div>
+<% end %>
 
-<h2>Books</h2>
- <table>
-   <tr>
-    <th></th>
+<div class="container pt-5">
+ <div class="row">
+  <%= render 'current', book: @book, user: @user %>
+
+  <div class="col-md-8 offset-md-1">
+
+   <h2>Books</h2>
+   <table class="table">
+    <tr>
+     <th></th>
      <th>Title</th>
      <th>Opinion</th>
-   </tr>
+    </tr>
 
-  <% @books.each do |book| %>
-   <tr>
-    <td>
-     <%= image_tag book.user.get_profile_image(40,40) %>
-    </td>
-    <td>
-     <%= link_to book_path(book.id) do %>
-     <%= book.title %>
-     <% end %>
-    </td>
-    <td>
-     <%= book.body %>
-    </td>
-   </tr>
-  <% end %>
+    <% @books.each do |book| %>
+    <tr>
+     <td>
+      <%= link_to user_path(book.user.id) do %>
+      <%= image_tag book.user.get_profile_image(40,40) %>
+      <% end %>
+     </td>
+     <td>
+      <%= link_to book_path(book.id) do %>
+      <%= book.title %>
+      <% end %>
+     </td>
+     <td>
+      <%= book.body %>
+     </td>
+    </tr>
+   <% end %>
 
- <table>
+  <table>
+  </div>
+ </div>
+</div>
